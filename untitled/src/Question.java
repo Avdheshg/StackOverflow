@@ -46,6 +46,11 @@ public class Question implements Votable, Commentable
     }
 
     @Override
+    public int getVoteCount() {
+        return 0;
+    }
+
+    @Override
     public void addComment(Comment comment)
     {
         comments.add(comment);

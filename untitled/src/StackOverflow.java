@@ -1,6 +1,7 @@
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
 
 public class StackOverflow
 {
@@ -57,6 +58,21 @@ public class StackOverflow
     public void acceptAnswer(Answer answer)
     {
         answer.markAnswerAccepted();
+    }
+
+    public List<Question> searchQuestions(String query)
+    {
+        return questions.values().stream()
+                .filter(
+                    question -> question.getTitle().toLowerCase().contains(query.toLowerCase()) ||
+                      question.getContent().toLowerCase().contains(query.toLowerCase()) ||
+                      question.getTags().stream().anyMatch(tag -> tag.getName().equalsIgnoreCase(query))
+                ).collect(Collectors.toList());
+    }
+
+    public List<Question> getQuestionsByUser(User user)
+    {
+        return user.getQuestions();
     }
 
 }

@@ -63,4 +63,15 @@ public class User
         return comment;
     }
 
+    // Getters
+    public int getId() { return id; }
+    public String getUsername() { return username; }
+    public int getReputation() { return reputation; }
+    public List<Question> getQuestions()
+    {
+        return new ArrayList<>(questions);
+    }
+    public List<Answer> getAnswers() { return new ArrayList<>(answers); }
+    public List<Comment> getComments() { return new ArrayList<>(comments); }
+
 }

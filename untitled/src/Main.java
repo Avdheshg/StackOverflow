@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args)
@@ -42,6 +41,25 @@ public class Main {
 
         // alice answers bob question
         Answer aliceAnswerToBob = stackOverflowSystem.answerQuestion(alice, bobQuestion, "List comprehensions in Python provide a concise way to create lists...");
+
+        // search functionality
+        System.out.println("All questions related to Java");
+        for (Question foundQuestion : stackOverflowSystem.searchQuestions("Java"))
+        {
+            System.out.println(foundQuestion.getTitle());
+            System.out.println(foundQuestion.getContent());
+            System.out.println(foundQuestion.getTags());
+        }
+
+        // getting all questions by user
+        System.out.println("All questions asked by user Bob");
+        for (Question question : stackOverflowSystem.getQuestionsByUser(bob))
+        {
+            System.out.println(question.getTitle());
+            System.out.println(question.getContent());
+            System.out.println(question.getTags());
+        }
+
 
     }
 }
